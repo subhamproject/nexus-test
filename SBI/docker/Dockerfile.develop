@@ -1,0 +1,4 @@
+FROM maven:3.3
+ADD ./target/my-app-*-SNAPSHOT.jar /tmp/my-app-*-SNAPSHOT.jar
+EXPOSE 8080
+CMD ["java", "-jar", "/tmp/my-app-*-SNAPSHOT.jar"]
