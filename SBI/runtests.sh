@@ -1,2 +1,2 @@
 #!/bin/bash
-mvn -s settings.xml release:clean release:prepare release:perform
+mvn -X -s settings.xml release:clean release:prepare release:perform
