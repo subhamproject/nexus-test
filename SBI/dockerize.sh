@@ -20,7 +20,7 @@ case $BRANCH_NAME in
   if [ -n "$(echo $BRANCH_NAME|grep '[a-zA-Z]')" ];then
     tags=$(git describe | sed 's/-g[0-9a-f]\{7,8\}$//')
     tag=$BRANCH_NAME-$tags
-   dockerfile=Dockerfile.develop
+   dockerfile=Dockerfile.prod
    fi
     ;;
   *)
