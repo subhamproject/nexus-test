@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.qmetry</groupId>
 	<artifactId>testng-java-example</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>testng-demo</name>
 	<url>http://maven.apache.org</url>
@@ -129,17 +129,16 @@
 	</build>
 	
 <scm>
-    <developerConnection>scm:git:https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@github.com/subhamproject/nexus-check.git</developerConnection>
-   <tag>v0.0.19</tag>
+    <developerConnection>scm:git:https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@github.com/subhamproject/nexus-test.git</developerConnection>
   </scm>
 	<distributionManagement>
       <repository>
       <id>nexus-release</id>
-     <url>http://ec2-54-169-157-165.ap-southeast-1.compute.amazonaws.com:8081/nexus/content/repositories/nexus-release</url>
+     <url>http://ec2-54-169-157-165.ap-southeast-1.compute.amazonaws.com:8081/nexus/content/repositories/test-release</url>
       </repository>
         <snapshotRepository>
             <id>nexus-snapshot</id>
-            <url>http://ec2-54-169-157-165.ap-southeast-1.compute.amazonaws.com:8081/nexus/content/repositories/nexus-snapshot</url>
+            <url>http://ec2-54-169-157-165.ap-southeast-1.compute.amazonaws.com:8081/nexus/content/repositories/test-snapshot</url>
         </snapshotRepository>
 </distributionManagement>
 
