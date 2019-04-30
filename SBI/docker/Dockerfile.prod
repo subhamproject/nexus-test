@@ -1,4 +1,4 @@
 FROM maven:3.5.0-jdk-8
-ADD ./target/testng-java-example-*.jar /tmp/testng-java-example-*.jar
+ADD ./target/testng-java-example-*-SNAPSHOT.jar /tmp/testng-java-example-*-SNAPSHOT.jar
 EXPOSE 8080
-CMD ["java", "-jar", "/tmp/testng-java-example-*.jar"]
+CMD ["java", "-jar", "/tmp/ttestng-java-example-*-SNAPSHOT.jar"]
