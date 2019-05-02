@@ -99,7 +99,7 @@
                </executions>
                <configuration>
                   <serverId>nexus-release</serverId>
-                  <nexusUrl>http://ec2-54-169-157-165.ap-southeast-1.compute.amazonaws.com:8081/nexus/</nexusUrl>
+                  <nexusUrl>http://ec2-13-250-1-192.ap-southeast-1.compute.amazonaws.com:9091/nexus/</nexusUrl>
                   <skipStaging>true</skipStaging>
                </configuration>
             </plugin>
@@ -135,11 +135,11 @@
 	<distributionManagement>
       <repository>
       <id>nexus-release</id>
-     <url>http://ec2-54-169-157-165.ap-southeast-1.compute.amazonaws.com:8081/nexus/content/repositories/test-release</url>
+     <url>http://ec2-13-250-1-192.ap-southeast-1.compute.amazonaws.com:9091/nexus/repository/nexus-release</url>
       </repository>
         <snapshotRepository>
             <id>nexus-snapshot</id>
-            <url>http://ec2-54-169-157-165.ap-southeast-1.compute.amazonaws.com:8081/nexus/content/repositories/test-snapshot</url>
+            <url>http://ec2-13-250-1-192.ap-southeast-1.compute.amazonaws.com:9091/nexus/repository/nexus-snapshot/</url>
         </snapshotRepository>
 </distributionManagement>
 
