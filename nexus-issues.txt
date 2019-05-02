@@ -1,0 +1,6 @@
+https://sonatype-download.global.ssl.fastly.net/repository/repositoryManager/3/nexus-3.16.1-02-unix.tar.gz
+https://support.sonatype.com/hc/en-us/articles/360000052388-What-to-Do-When-the-Database-is-Out-of-Disk-Space
+https://support.sonatype.com/hc/en-us/articles/235816228-Relocating-Blob-Stores
+https://support.sonatype.com/hc/en-us/articles/115002930827-Accessing-the-OrientDB-Console
+https://blog.sonatype.com/2011/06/nexus-tips-and-tricks-backup-nexus/
+https://stackoverflow.com/questions/42951710/orientdb-corruption-state-in-nexus-repository-version-3-2-0-01
