@@ -135,11 +135,11 @@
 	<distributionManagement>
       <repository>
       <id>nexus-release</id>
-     <url>http://ec2-13-250-1-192.ap-southeast-1.compute.amazonaws.com:8081/repository/nexus-release</url>
+     <url>http://ec2-13-250-1-192.ap-southeast-1.compute.amazonaws.com:8081/repository/test-release</url>
       </repository>
         <snapshotRepository>
             <id>nexus-snapshot</id>
-            <url>http://ec2-13-250-1-192.ap-southeast-1.compute.amazonaws.com:8081/repository/nexus-snapshot/</url>
+            <url>http://ec2-13-250-1-192.ap-southeast-1.compute.amazonaws.com:8081/repository/test-snapshot/</url>
         </snapshotRepository>
 </distributionManagement>
 
