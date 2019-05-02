@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.qmetry</groupId>
 	<artifactId>testng-java-example</artifactId>
-	<version>0.0.10-SNAPSHOT</version>
+	<version>0.0.10</version>
 	<packaging>jar</packaging>
 	<name>testng-demo</name>
 	<url>http://maven.apache.org</url>
@@ -130,7 +130,7 @@
 	
 <scm>
     <developerConnection>scm:git:https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@github.com/subhamproject/nexus-test.git</developerConnection>
-    <tag>HEAD</tag>
+    <tag>{project.version}</tag>
   </scm>
 	<distributionManagement>
       <repository>
