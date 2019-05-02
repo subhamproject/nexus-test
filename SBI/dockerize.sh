@@ -36,5 +36,5 @@ esac
 services=$(cat $(dirname $0)/service-manifest.txt)
 for s in $services
 do
-docker build -t ${s}:$tag --build-arg VERSION=$(git describe | sed 's/-g[0-9a-f]\{7,8\}$//') -f $(dirname $0)/docker/$dockerfile .
+docker build -t ${s}:$tag --build-arg VERSION=$(git describe | sed 's/-g[0-9a-f]\{7,8\}$//'|cut -d'-' -f1) -f $(dirname $0)/docker/$dockerfile .
 done
