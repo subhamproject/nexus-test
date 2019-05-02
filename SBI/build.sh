@@ -6,4 +6,4 @@ export GROUPID=$(id -g)
 echo "Running as UID=$USERID, GID=$GROUPID"
 cd $(dirname $0)
 
-docker-compose -f test-bed.yml run --name maven-${BUILD_NUMBER} --rm -w "$WORKSPACE" --entrypoint "mvn -X -s settings.xml deploy" maven-app-build
+docker-compose -f test-bed.yml run --name maven-${BUILD_NUMBER} --rm -w "$WORKSPACE" --entrypoint "mvn -s settings.xml deploy" maven-app-build
