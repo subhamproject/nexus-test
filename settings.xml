@@ -121,14 +121,9 @@ under the License.
     </server>
     -->
     <server>
-      <id>nexus-snapshot</id>
-      <username>${env.NEXUS_USERNAME}</username>
-      <password>${env.NEXUS_PASSWORD}</password>
-    </server>
-   <server>
-      <id>nexus-release</id>
-      <username>${env.NEXUS_USERNAME}</username>
-      <password>${env.NEXUS_PASSWORD}</password>
+      <id>nexus</id>
+      <username>admin</username>
+      <password>admin</password>
     </server>
    <server>
       <id>aws-release</id>

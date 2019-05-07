@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.qmetry</groupId>
 	<artifactId>testng-java-example</artifactId>
-	<version>0.0.3-SNAPSHOT</version>
+	<version>0.0.18</version>
 	<packaging>jar</packaging>
 	<name>testng-demo</name>
 	<url>http://maven.apache.org</url>
@@ -99,7 +99,7 @@
                </executions>
                <configuration>
                   <serverId>nexus-release</serverId>
-                  <nexusUrl>http://ec2-54-169-157-165.ap-southeast-1.compute.amazonaws.com:8081/nexus/</nexusUrl>
+                  <nexusUrl>http://ec2-13-250-1-192.ap-southeast-1.compute.amazonaws.com:8081</nexusUrl>
                   <skipStaging>true</skipStaging>
                </configuration>
             </plugin>
@@ -107,7 +107,7 @@
       </build>
    </profile>
 </profiles>
-      <tagNameFormat>v@{project.version}</tagNameFormat>
+      <tagNameFormat>@{project.version}</tagNameFormat>
       <autoVersionSubmodules>true</autoVersionSubmodules>
       <releaseProfiles>releases</releaseProfiles>
    </configuration>
@@ -134,12 +134,12 @@
   </scm>
 	<distributionManagement>
       <repository>
-      <id>nexus-release</id>
-     <url>http://ec2-54-169-157-165.ap-southeast-1.compute.amazonaws.com:8081/nexus/content/repositories/test-release</url>
+      <id>nexus</id>
+     <url>http://10.10.100.101:8081/repository/${env.NEXUS_REPO}</url>
       </repository>
         <snapshotRepository>
-            <id>nexus-snapshot</id>
-            <url>http://ec2-54-169-157-165.ap-southeast-1.compute.amazonaws.com:8081/nexus/content/repositories/test-snapshot</url>
+            <id>nexus</id>
+            <url>http://10.10.100.101:8081/repository/${env.NEXUS_REPO}</url>
         </snapshotRepository>
 </distributionManagement>
 
