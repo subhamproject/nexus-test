@@ -10,9 +10,5 @@ services:
       - "${JENKINS_HOME}:${JENKINS_HOME}:rw"
       - "${WORKSPACE}:${WORKSPACE}:rw"
      environment:
-      AWS_ACCESS_KEY: aws
-      AWS_SECRET_KEY: key
-      NEXUS_USERNAME: admin
-      NEXUS_PASSWORD: admin
-      GIT_USERNAME: git
-      GIT_PASSWORD: git
+      NEXUS_USERNAME: $NEXUS_USERNAME
+      NEXUS_PASSWORD: $NEXUS_PASSWORD
