@@ -25,11 +25,9 @@ case $BRANCH_NAME in
     ;;
   *)
   echo $BRANCH_NAME
-    if [ -z "$(echo $BRANCH_NAME|grep '[a-zA-Z]')" ];then
     tags=$(git describe | sed 's/-g[0-9a-f]\{7,8\}$//')
     tag=$BRANCH_NAME-$tags
     dockerfile=Dockerfile.develop
-    fi
 esac
 
 services=$(cat $(dirname $0)/service-manifest.txt)
