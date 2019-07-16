@@ -1,7 +1,7 @@
 #!/bin/bash
 LOG_FILE=build_fail.log
 if grep -i FAILURE ${LOG_FILE} >> /dev/null;then
- :
+ echo "present"
  else
  mv ${LOG_FILE} ${LOG_FILE}-txt
  fi
