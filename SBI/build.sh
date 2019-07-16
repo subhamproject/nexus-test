@@ -1,7 +1,7 @@
 #!/bin/bash
 set -x
 LOG_FILE=build_fail.log
-> ${LOG_FILE}
+[ -s ${LOG_FILE} ] && cat /dev/null >> ${LOG_FILE}
 exec > >(tee -a ${LOG_FILE} )
 exec 2>&1
 
