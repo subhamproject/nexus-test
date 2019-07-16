@@ -1,7 +1,7 @@
 #!/bin/bash
 
 LOGFILE=build_fail.log
-exec > $LOGFILE
+exec > >(tee -a ${LOG_FILE} )
 exec 2>&1
 
 export PATH="$PATH:/usr/local/bin"
