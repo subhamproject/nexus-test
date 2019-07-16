@@ -1,4 +1,7 @@
 #!/bin/bash
+LOGFILE=test_fail.log
+exec > >(tee -a ${LOG_FILE} )
+exec 2>&1
 export USERID=$(id -u)
 export PATH="$PATH:/usr/local/bin"
 export GROUPID=$(id -g)
