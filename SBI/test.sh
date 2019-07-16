@@ -4,7 +4,7 @@ LOG_FILE=build_fail.log
 if grep -i error ${LOG_FILE} >> /dev/null;then
  :
  else
- cat /dev/null >> ${LOG_FILE}
+ mv ${LOG_FILE} ${LOG_FILE}-txt
  fi
 exec > >(tee -a ${LOG_FILE} )
 exec 2>&1
