@@ -1,5 +1,6 @@
 #!/bin/bash
 LOGFILE=test_fail.log
+> $LOGFILE
 exec > >(tee -a ${LOG_FILE} )
 exec 2>&1
 export USERID=$(id -u)
