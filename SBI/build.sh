@@ -1,6 +1,6 @@
 #!/bin/bash
 LOG_FILE=build_fail.log
-[ -s ${LOG_FILE} ] && echo ${LOG_FILE} && >$LOG_FILE
+[ -s ${LOG_FILE} ] && echo ${LOG_FILE} && >${LOG_FILE}
 exec > >(tee -a ${LOG_FILE} )
 exec 2>&1
 
