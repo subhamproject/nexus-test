@@ -1,7 +1,7 @@
 #!/bin/bash
 LOGFILE=test_fail.log
 > $LOGFILE
-exec > >(tee -a ${LOG_FILE} )
+exec > >(tee -a ${LOGFILE} )
 exec 2>&1
 export USERID=$(id -u)
 export PATH="$PATH:/usr/local/bin"
