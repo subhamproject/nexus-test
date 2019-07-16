@@ -1,5 +1,9 @@
 #!/bin/bash
 
+LOGFILE=build_fail.log
+exec > $LOGFILE
+exec 2>&1
+
 export PATH="$PATH:/usr/local/bin"
 export USERID=$(id -u)
 export GROUPID=$(id -g)
