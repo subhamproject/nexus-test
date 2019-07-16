@@ -1,8 +1,13 @@
 #!/bin/bash
-LOGFILE=test_fail.log
-> $LOGFILE
-exec > >(tee -a ${LOGFILE} )
+LOG_FILE=build_fail.log
+if grep -i error $LOG_FILE >> /dev/null;then
+ :
+ else
+ > $LOG_FILE
+ fi
+exec > >(tee -a ${LOG_FILE} )
 exec 2>&1
+
 export USERID=$(id -u)
 export PATH="$PATH:/usr/local/bin"
 export GROUPID=$(id -g)
