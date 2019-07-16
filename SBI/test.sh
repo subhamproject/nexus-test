@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 LOG_FILE=build_fail.log
 if grep -i error ${LOG_FILE} >> /dev/null;then
  :
