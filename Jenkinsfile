@@ -1,26 +1,97 @@
+#!groovy
 pipeline {
-    agent {
-        docker {
-            image 'maven:3-alpine'
-            args '-u 994 -v /root/.m2:/root/.m2 -v /etc/passwd:/etc/passwd -v /etc/group:/etc/group -v /jenkins:/jenkins'
+  options {
+    buildDiscarder(logRotator(numToKeepStr: '10'))
+    disableConcurrentBuilds()
+  }
+  agent any
+  stages {
+    stage('Build') {
+      steps {
+          catchError {
+          sh '''
+            SBI/build.sh
+          '''
+          }
+      }
+    post {
+            success {
+                echo 'Build stage successful'
+            }
+            failure {
+                echo 'Compile stage failed'
+                error('Build is aborted due to failure of build stage')
+         }
+     }
+   }
+    stage('Test') {
+      steps {
+        catchError {
+          sh '''
+            SBI/test.sh
+          '''
+        }
+      }
+  post {
+        success {
+              echo 'Test stage successful'
+            }
+            failure {
+               echo 'Test stage failed'
+              error('Test is aborted due to failure of Test stage')
+
         }
     }
-    stages {
-        stage('Build') {
-            steps {
-                sh 'mvn clean deploy -DAWS_DEFAULT_REGION=ap-southeast-1'
-            }
+  }
+  stage('Container Build') {
+  steps {
+        catchError {
+          sh '''
+            SBI/dockerize.sh
+          '''
         }
-        stage('Test') {
-            steps {
-                sh 'mvn test'
+      }
+     post {
+            success {
+                echo 'Docker image build stage successful'
             }
-            post {
-                always {
-                   // junit 'target/surefire-reports/*.xml'
-                    step([$class: 'Publisher', reportFilenamePattern: '**/target/surefire-reports/testng-results.xml'])
-                }
-            }
-        }
+            failure {
+                echo 'Docker image build stage failed'
+                error('Docker build is aborted due to failure of dockerize stage')
+
+             }
+         }
     }
-}
+  }
+  post {
+    always {
+      script {
+        currentBuild.result = currentBuild.currentResult
+        sh '''
+        grep ERROR build_fail.log >> build_fail.txt && rm -f build_fail.log && mv build_fail.txt build_fail.log
+        unix2dos build_fail.log
+        '''
+      }
+    }
+    fixed {
+      emailext (attachLog: true, body: "${currentBuild.result}: ${BUILD_URL}", //compressLog: true, 
+                subject: "Jenkins build back to normal: ${currentBuild.fullDisplayName}", 
+              //  recipientProviders: [[$class: 'CulpritsRecipientProvider'],[$class: 'RequesterRecipientProvider']],
+                to: 'smandal@rythmos.com')
+    }
+    failure {
+        emailext (attachmentsPattern: 'build_fail.log',
+                body: "${currentBuild.result}: ${BUILD_URL}", //compressLog: true, 
+                subject: "Build failed in Jenkins: ${currentBuild.fullDisplayName}", 
+              //  recipientProviders: [[$class: 'CulpritsRecipientProvider'],[$class: 'RequesterRecipientProvider']],
+              to: 'smandal@rythmos.com')
+    }
+    unstable {
+      // notify users when the Pipeline unstable
+      emailext (attachLog: true, body: "${currentBuild.result}: ${BUILD_URL}", //compressLog: true, 
+                subject: "Unstable Pipeline: ${currentBuild.fullDisplayName}", 
+               // recipientProviders: [[$class: 'CulpritsRecipientProvider'],[$class: 'RequesterRecipientProvider']],
+                to: 'smandal@rythmos.com')
+    }
+  }
+  }
