@@ -1,5 +1,4 @@
 #!/bin/bash
-set -x
 LOG_FILE=build_fail.log
 [ -s ${LOG_FILE} ] && >${LOG_FILE}
 exec > >(tee -a ${LOG_FILE} )
