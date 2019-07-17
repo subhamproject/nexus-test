@@ -1,4 +1,13 @@
 #!/bin/bash
+
+LOG_FILE=build_fail.log
+if grep FAILURE ${LOG_FILE} >> /dev/null;then
+ :
+ else
+ mv ${LOG_FILE} ${LOG_FILE}-txt-$$
+ fi
+exec > >(tee -a ${LOG_FILE} )
+exec 2>&1
 export PATH="$PATH:/usr/local/bin"
 #docker-compose build maven-app-image-docker
 case $BRANCH_NAME in
