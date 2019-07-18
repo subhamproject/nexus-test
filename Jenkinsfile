@@ -81,11 +81,22 @@ pipeline {
                 to: 'smandal@rythmos.com')
     }
     failure {
+      script {
+        if (fileExists('build_fail.log')) {
         emailext (attachmentsPattern: 'build_fail.log',
                 body: "${currentBuild.result}: ${BUILD_URL}", //compressLog: true, 
                 subject: "Build failed in Jenkins: ${currentBuild.fullDisplayName}", 
               //  recipientProviders: [[$class: 'CulpritsRecipientProvider'],[$class: 'RequesterRecipientProvider']],
               to: 'smandal@rythmos.com')
+        }else
+        {
+          emailext (attachLog: true, //attachmentsPattern: 'build_fail.log',
+                body: "${currentBuild.result}: ${BUILD_URL}", //compressLog: true, 
+                subject: "Build failed in Jenkins: ${currentBuild.fullDisplayName}", 
+              //  recipientProviders: [[$class: 'CulpritsRecipientProvider'],[$class: 'RequesterRecipientProvider']],
+              to: 'smandal@rythmos.com')
+      }
+    }
     }
     unstable {
       // notify users when the Pipeline unstable
