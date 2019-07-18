@@ -68,7 +68,7 @@ pipeline {
       script {
         currentBuild.result = currentBuild.currentResult
         sh '''
-        tail -50 build_fail.log  >> build_fail.txt && rm -f build_fail.log && mv build_fail.txt build_fail.log && \
+        [ -f build_fail.log ] && tail -50 build_fail.log  >> build_fail.txt && rm -f build_fail.log && mv build_fail.txt build_fail.log && \
         rm -f build_fail.log-txt* && \
         unix2dos build_fail.log
         '''
