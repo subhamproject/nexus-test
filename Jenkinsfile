@@ -68,7 +68,7 @@ pipeline {
       script {
         currentBuild.result = currentBuild.currentResult
         sh '''
-        grep ERROR build_fail.log >> build_fail.txt && rm -f build_fail.log && mv build_fail.txt build_fail.log
+        tac build_fail.log |head -50 |tac >> build_fail.txt && rm -f build_fail.log && mv build_fail.txt build_fail.log
         unix2dos build_fail.log
         '''
       }
