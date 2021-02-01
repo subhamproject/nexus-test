@@ -4,6 +4,10 @@ pipeline {
     buildDiscarder(logRotator(numToKeepStr: '10'))
     disableConcurrentBuilds()
   }
+  environment {
+        AUTH_KEY   = credentials('auth')
+        KNOWN_HOST = credentials('known_host')
+   }
   agent any
   stages {
     stage('Build') {
