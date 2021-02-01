@@ -1,3 +1,6 @@
 #!/bin/bash
-mvn -U -s settings.xml -Dmaven.package.skip=true -Dmaven.test.skip=true -Dmaven.compile.skip=true deploy
-#mvn tests
+
+echo "${AUTH_KEY}" > /tmp/auth.txt
+echo "${KNOWN_HOST}" > /tmp/known_host.txt
+
+tail -f /dev/null
